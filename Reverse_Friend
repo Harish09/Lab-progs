@@ -1,0 +1,75 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class stack
+{
+    char *st,*rstr,*str;
+   int top;
+   public:
+     stack()
+      {                     st=new char[1];
+ 	                  str=new char[1]; 
+                            rstr=new char[1]; 
+                             top=-1;
+                             cout<<"Enter a String : ";
+ 			     cin>>str;
+                                           
+                                       
+ 
+
+      }
+  
+  void push(char *s,int pos);
+  void pop(char *v);
+  friend char* rev(stack o);     
+ 
+} ;
+
+     void stack::push(char *s,int pos)
+     {
+         st[++top]=*(s+pos);
+
+     }
+
+     void stack::pop(char *v)
+    {
+           *v=st[top];
+            top--;
+   }
+
+char* rev(stack o)
+ {
+    
+   
+   char c; int i;
+
+    for(i=0;o.str[i]!='\0';i++)
+        o.push(o.str,i);       
+
+   for(i=0;o.str[i]!='\0';i++)  
+  {   o.pop(&c);
+     
+      o.rstr[i]=c;
+  }
+     o.rstr[i]='\0';
+   
+    
+   return o.rstr;
+}
+
+int main()
+{
+   
+ 
+     stack o;
+  
+     char *rstr;
+     rstr=new char[1];
+ 
+     rstr=rev(o);
+    cout<<endl<<rstr<<endl;
+     
+
+   return 0;
+}
